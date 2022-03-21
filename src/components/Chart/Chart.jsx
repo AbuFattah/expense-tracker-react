@@ -2,67 +2,42 @@ import React, { useEffect } from "react";
 import classes from "./Chart.module.css";
 import ChartBar from "./ChartBar";
 import Card from "../UI/Card";
-function getInitialChartData() {
-  return {
-    january: {
-      amount: 0,
-    },
-    february: {
-      amount: 0,
-    },
-    march: {
-      amount: 0,
-    },
-    april: {
-      amount: 0,
-    },
-    may: {
-      amount: 0,
-    },
-    june: {
-      amount: 0,
-    },
-    july: {
-      amount: 0,
-    },
-    august: {
-      amount: 0,
-    },
-    september: {
-      amount: 0,
-    },
-    october: {
-      amount: 0,
-    },
-    november: {
-      amount: 0,
-    },
-    december: {
-      amount: 0,
-    },
-  };
+
+function getDataPoints() {
+  return [
+    { label: "Jan", value: 0 },
+    { label: "Feb", value: 0 },
+    { label: "Mar", value: 0 },
+    { label: "Apr", value: 0 },
+    { label: "May", value: 0 },
+    { label: "Jun", value: 0 },
+    { label: "Jul", value: 0 },
+    { label: "Aug", value: 0 },
+    { label: "Sep", value: 0 },
+    { label: "Oct", value: 0 },
+    { label: "Nov", value: 0 },
+    { label: "Dec", value: 0 },
+  ];
 }
+
 const Chart = (props) => {
-  let total = 0;
-  const chartData = getInitialChartData();
+  let maxValue = 0;
+  const dataPoints = getDataPoints();
 
   props.filteredData.forEach((item) => {
-    const month = item.date
-      .toLocaleString("en-us", { month: "long" })
-      .toLowerCase();
+    const month = item.date.getMonth();
 
-    chartData[month].amount += item.amount;
-
-    total += item.amount;
+    dataPoints[month].value += item.amount;
+    maxValue = Math.max(maxValue, item.amount);
   });
 
-  const chartBars = Object.keys(chartData).map((month) => {
+  const chartBars = dataPoints.map((dataPoint) => {
     return (
       <ChartBar
         key={Math.random().toString()}
-        label={month.slice(0, 3)}
-        total={total}
-        val={chartData[month].amount}
+        label={dataPoint.label}
+        max={maxValue}
+        val={dataPoint.value}
       ></ChartBar>
     );
   });
