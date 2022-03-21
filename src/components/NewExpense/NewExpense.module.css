@@ -1,0 +1,22 @@
+.add-new-expense {
+  background-color: #7a84d4;
+  color: #2b2e4a;
+  width: 600px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.add-new-expense button {
+  background-color: #2b2e4a;
+  border: 0;
+  padding: 15px 20px;
+  border-radius: 5px;
+  color: #fff;
+  margin: 5px;
+  cursor: pointer;
+}
+.add-new-expense button:hover {
+  opacity: 0.9;
+}

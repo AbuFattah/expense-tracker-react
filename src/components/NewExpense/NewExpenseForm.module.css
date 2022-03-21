@@ -1,0 +1,32 @@
+.new-expense__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.new-expense__controls label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+}
+.new-expense__controls input {
+  border: 0;
+  font: inherit;
+  border-radius: 5px;
+  height: 2.5rem;
+  padding: 5px;
+  width: 250px;
+}
+
+input[type="date"]:hover {
+  cursor: pointer;
+}
+
+.new-expense__actions {
+  margin: 10px 0;
+  text-align: end;
+}
+
+.new-expense__actions button {
+  padding: 15px 20px;
+}
